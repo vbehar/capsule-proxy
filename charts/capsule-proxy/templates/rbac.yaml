@@ -81,9 +81,14 @@ rules:
   - apiGroups: ["authorization.k8s.io"]
     resources: ["selfsubjectaccessreviews"]
     verbs: ["create", "get", "list", "watch"]
+    
   # Allow TokenReviews
   - apiGroups: ["authentication.k8s.io"]
     resources: ["tokenreviews"]
+
+  # Allow SubjectAccessReviews
+  - apiGroups: ["authorization.k8s.io"]
+    resources: ["subjectaccessreviews"]
     verbs: ["create"]
 ---
 apiVersion: rbac.authorization.k8s.io/v1
