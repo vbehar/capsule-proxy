@@ -173,6 +173,7 @@ func (n *kubeFilter) Start(ctx context.Context) error {
 	root.Use(
 		n.authorizationMiddleware,
 		n.reverseProxyMiddleware,
+		middleware.LoggerMiddleware(n.log),
 		middleware.CheckPaths(n.log, n.allowedPaths, n.impersonateHandler),
 		middleware.CheckJWTMiddleware(n.writer),
 	)
